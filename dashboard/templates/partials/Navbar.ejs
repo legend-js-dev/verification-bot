@@ -1,0 +1,22 @@
+<nav class="navbar">
+    <div class="content">
+      <div class="logo">
+        <a href="#"><%= bot.user.username %></a>
+      </div>
+      <ul class="menu-list">
+        <div class="icon cancel-btn">
+          <i class="fas fa-times"></i>
+        </div>
+        <% if (user) { %>
+        <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/dashboard"><i class="fas fa-rocket"></i> Dashboard</a></li>
+        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> logout</a></li>
+        <% } else { %>
+            <li><a href="/login"><i class="fas fa-sign-in-alt"></i> login</a></li>
+          <% } %>
+      </ul>
+      <div class="icon menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
