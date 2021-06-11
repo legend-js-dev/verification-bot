@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/verify.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+ <%- include('./partials/Navbar', { bot, user }); %>
+  <div class="section-container">
+    <section id="verify">
+    <i class="fas fa-fingerprint verify-i"></i>
+    <h3 class="section-header">Verification</h3>
+    <p>Please complete the captcha below to verify</p>
+    <form action='' method="POST" id="captcha">
+      <div class="h-captcha" data-theme="dark" data-sitekey=<%= config.website.captcha.sitekey %> data-callback="Submit"></div>
+    </form>
+    </section>
+    </div>
+    <footer>
+      <span>Created By <a href="https://github.com/legend-js-dev">legendjs</a> | <span class="far fa-copyright"></span> 2021 All rights reserved.</span>
+    </footer>
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+  </body>
+</html>
