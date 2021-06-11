@@ -1,0 +1,78 @@
+body {
+  background-color: #222222;
+}
+
+.mainbox {
+  background-color: #222222;
+  margin: auto;
+  height: 600px;
+  width: 600px;
+  position: relative;
+}
+
+  .err {
+    color: #ffffff;
+    font-weight: 100;
+    text-shadow: #333333 1px 1px, #333333 2px 2px, #333333 3px 3px, #333333 4px 4px, #333333 5px 5px, #333333 6px 6px, #333333 7px 7px, #333333 8px 8px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 11rem;
+    position:absolute;
+    left: 20%;
+    top: 8%;
+  }
+  
+  .far {
+  position: absolute;
+  font-size: 8.5rem;
+  left: 42%;
+  top: 15%;
+  color: #ffffff;
+  font-weight: 100;
+  text-shadow: #333333 1px 1px, #333333 2px 2px, #333333 3px 3px, #333333 4px 4px, #333333 5px 5px, #333333 6px 6px, #333333 7px 7px, #333333 8px 8px;
+}
+
+ .err2 {
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 11rem;
+    position:absolute;
+    left: 68%;
+    top: 8%;
+    font-weight: 100;
+    text-shadow: #333333 1px 1px, #333333 2px 2px, #333333 3px 3px, #333333 4px 4px, #333333 5px 5px, #333333 6px 6px, #333333 7px 7px, #333333 8px 8px;
+  }
+
+.msg {
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.6rem;
+    position:absolute;
+    left: 16%;
+    color: #fff;
+    top: 45%;
+    width: 75%;
+  }
+
+.button {
+  font-size: 20px;
+  border-radius: 12px;
+  margin: 12px;
+  padding: 12px;
+  color: #fff;
+  background-color: #222222;
+  border: 2px solid #fff;
+  text-align: center;
+}
+
+.button:hover {
+  border: 2px solid #222222;
+  color: #222222;
+  background-color: #fff;
+}
+
+h1 {
+  text-align: center;
+  font-size: 15em;
+  font-weight: 100;
+  text-shadow: #333333 1px 1px, #333333 2px 2px, #333333 3px 3px, #333333 4px 4px, #333333 5px 5px, #333333 6px 6px, #333333 7px 7px, #333333 8px 8px;
+}
