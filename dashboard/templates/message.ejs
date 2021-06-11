@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/message.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+    <div class="content">
+      <div class="logo">
+        <a href="#">Bot</a>
+      </div>
+      <ul class="menu-list">
+        <div class="icon cancel-btn">
+          <i class="fas fa-times"></i>
+        </div>
+        <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/dashboard"><i class="fas fa-rocket"></i> Dashboard</a></li>
+        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> logout</a></li>
+      </ul>
+      <div class="icon menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+    <div class="section-container">
+      <section id="success">
+        <i class="fas fa-fingerprint verify-i"></i>
+        <h3 class="section-header">Verification</h3>
+        <p><%= message %></p>
+      </section>
+    </div>
+    <footer>
+      <span>Created By <a href="https://github.com/legend-js-dev">legendjs</a> | <span class="far fa-copyright"></span> 2021 All rights reserved.</span>
+    </footer>
+  </body>
+</html>
