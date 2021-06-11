@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  </head>
+  <body>
+  <%- include('./partials/Navbar', { bot, user }); %>
+  <div class="section-container">
+    <section id="home">
+    <img src="images/logo.png" class="bot-icon">
+    <h3 class="section-header">Bot Name</h3>
+    <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dapibus, ex eget rhoncus imperdiet, erat eros aliquam sapien, eget tempus orci neque et velit. Ut orci dui, varius ac porta vel, vulputate luctus turpis.</p>
+    <div class="btns">
+    <button><i class="fab fa-discord"></i> Invite</button> <button><i class="fab fa-discord"></i> Support Server</button>
+    </div>
+    </section>
+    </div>
+    <footer>
+      <span>Created By <a href="https://github.com/legend-js-dev">legendjs</a> | <span class="far fa-copyright"></span> 2021 All rights reserved.</span>
+    </footer>
+  <script src="js/script.js"></script>
+  </body>
+</html>
