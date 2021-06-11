@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+  <%- include('./partials/Navbar', { bot, user }); %>
+    <div class="section-container">
+      <section id="general">
+        <%- guild.icon ? `<img class="guildIcon" src="https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}" alt="Guild Icon">` : `<img class="guildIcon" src="images/no-img.png" alt="Guild Icon">` %>
+        <h3 class="section-header">Configuration for <span class="guildName"><%= guild.name %></span></h3>
+        <p>Scroll down for the Configuration</p>
+      </section>
+      <section id="general">
+      <%- include('./partials/general'); %>
+      </section>
+      <section>
+      <h3 class="section-header">Verification</h3>
+      <h4>Logs Channel</h4>
+      <select class="LC">
+        <option value="0">
+        <%= db.get(`logs_${guild.id}`) ? guild.channels.cache.get(db.get(`logs_${guild.id}`)).name : 'None' %>
+        </option>
+        <% guild.channels.cache.filter(x => x.id !== db.get(`logs_${guild.id}`)).forEach(c => { %>
+        <% if (c.type !== 'category' && c.type !== 'voice') { %>
+        <option value="<%= c.id %>">
+        <%= c.name %>
+        </option>
+        <% } %>
+        <% }) %>
+      </select>
+      <h4>Warning Channel</h4>
+      <select class="WC">
+      <option value="0">
+        <%= db.get(`warningchannel_${guild.id}`) ? guild.channels.cache.get(db.get(`warningchannel_${guild.id}`)).name : 'None' %>
+      </option>
+      <% guild.channels.cache.filter(x => x.id !== db.get(`warningchannel_${guild.id}`)).forEach(c => { %>
+      <% if (c.type !== 'category' && c.type !== 'voice') { %>
+        <option value="<%= c.id %>">
+        <%= c.name %>
+        </option>
+        <% } %>
+        <% }) %>
+      </select>
+      <h4>Verification Role</h4>
+      <select class="VR">
+        <option value="0">
+          <%= db.get(`role_${guild.id}`) ? guild.roles.cache.get(db.get(`role_${guild.id}`)).name : 'None' %>
+        </option>
+        <% guild.roles.cache.filter(x => x.id !== db.get(`role_${guild.id}`)).forEach(r => { %>
+        <% if (r.name !== '@everyone' && r.managed === false) { %>
+        <option value="<%= r.id %>">
+        <%= r.name %>
+        </option>
+        <% } %>
+        <% }) %>
+      </select>
+      <h4>Punishment</h4>
+      <select class="P">
+        <option value="<%= db.get(`punishment_${guild.id}`) === 'kick' ? 'k' : 'b' %>">
+          <%= db.get(`punishment_${guild.id}`) === 'ban' ? 'Ban' : 'Kick' %>
+        </option>
+        <option value="<%= db.get(`punishment_${guild.id}`) === 'kick' ? 'b' : 'k' %>">
+          <%= db.get(`punishment_${guild.id}`) === 'kick' ? 'Ban' : 'Kick' %>
+        </option>
+      </select>
+      <button class="save-btn" id="save-btn">Save</button>
+      </section>
+    </div>
+    <script>
+  const body = document.querySelector('body'),
+	navbar = document.querySelector('.navbar'),
+	menuBtn = document.querySelector('.menu-btn'),
+	cancelBtn = document.querySelector('.cancel-btn'),
+	saveBtn = document.querySelector('.btn'),
+	prefix = document.getElementById('prefix'),
+	saveBtn2 = document.querySelector('.save-btn'),
+	LC = document.querySelector('.LC'),
+	WC = document.querySelector('.WC'),
+	VR = document.querySelector('.VR'),
+	P = document.querySelector('.P');
+	
+menuBtn.onclick = () => {
+	navbar.classList.add('show');
+	menuBtn.classList.add('hide');
+	body.classList.add('disabled');
+};
+
+cancelBtn.onclick = () => {
+	body.classList.remove('disabled');
+	navbar.classList.remove('show');
+	menuBtn.classList.remove('hide');
+};
+
+saveBtn.onclick = () => {
+let data = {
+		prefix: prefix.value,
+		guildID: '<%= guild.id %>'
+	};
+fetch('<%= config.website.protocol %><%= config.website.domain %>/api/prefix', {
+          method: 'POST',
+          mode: 'cors',
+          cache: 'no-cache',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          redirect: 'follow',
+          referrerPolicy: 'no-referrer',
+          body: JSON.stringify(data)
+        }).then(res => res.json()).then(body => {
+          if (body.alert) {
+            Swal.fire(body.alert.title, body.alert.message, body.alert.type).then(e => {
+            if (body.success) location.reload();
+            });
+          };
+        });
+};
+
+saveBtn2.onclick = () => {
+			let data = {
+				guildID: '<%= guild.id %>',
+				LogsC: LC.value,
+				WarningC: WC.value,
+				VR: VR.value,
+				Punishment: P.value
+			};
+			fetch(
+				'<%= config.website.protocol %><%= config.website.domain %>/api/save',
+				{
+					method: 'POST',
+					mode: 'cors',
+					cache: 'no-cache',
+					credentials: 'same-origin',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					redirect: 'follow',
+					referrerPolicy: 'no-referrer',
+					body: JSON.stringify(data)
+				}
+			)
+				.then(res => res.json())
+				.then(body => {
+					if (body.alert) {
+						Swal.fire(
+							body.alert.title,
+							body.alert.message,
+							body.alert.type
+						).then(e => {
+							if (body.success) location.reload();
+						});
+					}
+				});
+		};
+
+window.onscroll = () => {
+	this.scrollY > 20
+		? navbar.classList.add('sticky')
+		: navbar.classList.remove('sticky');
+};
+    </script>
+  </body>
+</html>
