@@ -71,7 +71,7 @@ module.exports = {
 					.addField('Verification Role', verificationRole)
 					.setColor('RANDOM')
 					.setFooter(
-						message.guild.name + ' | made by LΣGΣПD#0001',
+						message.guild.name + ' | made by legendjs#0001',
 						message.guild.iconURL({ dynamic: true })
 					);
 				return message.channel.send({ embed: embed });
