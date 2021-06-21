@@ -22,7 +22,7 @@ console.log(`
 
 console.log('-------------------------------------');
 console.log(
-	'[CREDITS]: made by legend-js | https://github.com/legend-js-dev | LΣGΣПD#0001'
+	'[CREDITS]: made by legend-js | https://github.com/legend-js-dev | legendjs#0001'
 );
 console.log('[WARNING]: Do not remove the credits');
 console.log('-------------------------------------');
