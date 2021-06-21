@@ -10,7 +10,7 @@ module.exports = {
 			.addField(`Verification`, '`bypass` | `config` | `verify`')
 			.setThumbnail(client.user.displayAvatarURL())
 			.setColor('RANDOM')
-			.setFooter(client.user.username + ' | made by LΣGΣПD#0001', client.user.displayAvatarURL());
+			.setFooter(client.user.username + ' | made by legendjs#0001', client.user.displayAvatarURL());
 		return message.channel.send({ embed: embed });
 	}
 };
