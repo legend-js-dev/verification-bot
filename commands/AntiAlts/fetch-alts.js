@@ -24,7 +24,7 @@ module.exports = {
 		let page = 0;
 		let e = new Discord.MessageEmbed()
 			.setDescription(pages[page].join('\n'))
-			.setFooter(`Page ${page + 1} of ${pages.length} (${alts.length} entries)` + " | Made by ant#0768 & LΣGΣПD#0001")
+			.setFooter(`Page ${page + 1} of ${pages.length} (${alts.length} entries)` + " | Made by ant#0768 & legendjs#0001")
 			.setColor('RANDOM');
 		const msg = await message.channel.send({ embed: e });
 		symbols.forEach(symbol => msg.react(symbol));
